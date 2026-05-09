@@ -1,0 +1,8 @@
+{
+  "name": "cylendra-wala",
+  "private": true,
+  "workspaces": [
+    "apps/backend",
+    "apps/frontend"
+  ]
+}

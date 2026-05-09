@@ -1,0 +1,14 @@
+node_modules/
+.env
+.env.*
+!.env.example
+!**/.env.example
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+apps/backend/uploads/
+
+# Frontend build output
+dist/
+apps/frontend/dist/
