@@ -119,3 +119,43 @@ Frontend runs on `http://localhost:5173`.
 - Backend (Render): set env vars `MONGODB_URI`, `JWT_SECRET`, `CLIENT_URL` (Vercel URL)
 - Frontend (Vercel): set `VITE_API_URL` to Render backend URL
 - DB: MongoDB Atlas connection string goes into `MONGODB_URI`
+
+## Host for Free (Atlas + Render + Vercel)
+
+> Note: Free tiers change over time and may sleep on inactivity.
+
+### 1) MongoDB Atlas (Free)
+
+1. Create a free cluster.
+2. Create a DB user + password.
+3. Add Network Access (for demo you can allow all; production should be restricted).
+4. Copy the connection string into `MONGODB_URI`.
+
+### 2) Backend on Render (Free)
+
+1. Create a new **Web Service** from this GitHub repo.
+2. Set **Root Directory** to `apps/backend`.
+3. Build command: `npm install`
+4. Start command: `npm start`
+5. Add Environment Variables:
+
+- `MONGODB_URI` (Atlas)
+- `JWT_SECRET` (long random string)
+- `CLIENT_URL` (your Vercel frontend URL)
+
+After deploy, note your backend URL (example: `https://xxx.onrender.com`).
+
+### 3) Frontend on Vercel (Free)
+
+1. Import the repo in Vercel.
+2. Set **Root Directory** to `apps/frontend`.
+3. Add Environment Variable:
+
+- `VITE_API_URL` = your Render backend URL
+
+4. Deploy.
+
+#### SPA Route Refresh Fix
+
+React Router routes like `/forgot-password` need a rewrite so refresh doesn’t 404.
+This repo includes Vercel rewrite config at `apps/frontend/vercel.json`.
